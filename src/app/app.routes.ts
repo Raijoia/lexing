@@ -1,3 +1,4 @@
+import { LexingComponent } from './components/lexing/lexing.component';
 import { Routes } from '@angular/router';
 import { CandyMachineComponent } from './components/candy-machine/candy-machine.component';
 import { AutomatoComponent } from './components/automato/automato.component';
@@ -26,5 +27,9 @@ export const routes: Routes = [
   {
     path: 'elevator',
     component: ElevatorComponent
+  },
+  {
+    path: 'lexing',
+    component: LexingComponent
   }
 ];
