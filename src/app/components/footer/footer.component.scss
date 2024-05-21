@@ -1,0 +1,29 @@
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 1.5rem 0;
+  position: relative;
+  font-family: 'Open Sans', sans-serif;
+  margin-top: 1.5rem;
+  background: #050c42;
+  width: 100vw;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  @media screen and ( min-height: 500px ) {
+    position: inherit;
+    margin-top: 6rem;
+  }
+  &__content {
+    text-align: center;
+    font-size: 1.125rem;
+    color: #ebebeb;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1rem;
+    line-height: 1.188rem;
+    bottom: 0;
+    padding-bottom: 0;
+  }
+}

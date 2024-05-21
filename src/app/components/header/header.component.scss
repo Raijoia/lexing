@@ -1,0 +1,26 @@
+.header {
+  background-color: #050C42;
+  height: 6rem;
+  display: flex;
+  color: white;
+  flex-direction: row;
+  align-items: center;
+  font-family: 'Open Sans', sans-serif;
+  justify-content: center;
+  padding: 0.3rem 2rem;
+  &__tittle {
+    color: inherit;
+    text-decoration: none;
+    font-size: 2rem;
+    cursor: pointer;
+    font-weight: bold;
+    align-items: center;
+    justify-content: center;
+    &:hover,
+    &:visited,
+    &:active {
+      color: inherit; // mantém a cor ao passar o mouse, visitar ou ativar o link
+      text-decoration: none; // remove o sublinhado ao passar o mouse, visitar ou ativar o link
+    }
+  }
+}

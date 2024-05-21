@@ -1,0 +1,14 @@
+.div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &__photo {
+    width: 30%;
+    height: 30%;
+    object-fit: cover;
+    border: 2px solid #fff;
+    transition: all 0.3s ease;
+  }
+}
+
+
