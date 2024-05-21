@@ -1,10 +1,10 @@
-import { LexingComponent } from './components/lexing/lexing.component';
+import { LexingComponent } from './components/projects/lexing/lexing.component';
 import { Routes } from '@angular/router';
-import { CandyMachineComponent } from './components/candy-machine/candy-machine.component';
-import { AutomatoComponent } from './components/automato/automato.component';
+import { CandyMachineComponent } from './components/projects/candy-machine/candy-machine.component';
+import { AutomatoComponent } from './components/automatos/automato/automato.component';
 import { HomeComponent } from './components/home/home.component';
-import { ElevatorComponent } from './components/elevator/elevator.component';
-import { AutomatoElevatorComponent } from './components/automato-elevator/automato-elevator.component';
+import { ElevatorComponent } from './components/projects/elevator/elevator.component';
+import { AutomatoElevatorComponent } from './components/automatos/automato-elevator/automato-elevator.component';
 
 export const routes: Routes = [
   {
@@ -22,14 +22,14 @@ export const routes: Routes = [
   },
   {
     path: 'automato-elevator',
-    component: AutomatoElevatorComponent
+    component: AutomatoElevatorComponent,
   },
   {
     path: 'elevator',
-    component: ElevatorComponent
+    component: ElevatorComponent,
   },
   {
     path: 'lexing',
-    component: LexingComponent
-  }
+    component: LexingComponent,
+  },
 ];
