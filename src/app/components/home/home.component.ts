@@ -13,5 +13,6 @@ export class HomeComponent {
   links = [
     { label: 'Candy Machine', url: 'candy-machine' },
     { label: 'Elevator', url: 'elevator' },
+    { label: 'Lexing', url: 'lexing' },
   ]
 }
