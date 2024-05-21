@@ -1,13 +1,13 @@
-# Elevator
+# Lexing
 
 ## Objetivo
-Projeto desenvolvido na UC de Teoria da computação e compiladores com objetivo de criar um elevador com autômato AFD
+Projeto desenvolvido na UC de Teoria da computação e compiladores com objetivo de criar um analisador léxico de compilador
 
 ## Link
-[Link para o projeto em produção](https://elevator-fawn.vercel.app)
+[****](****)
 
 ## Status
-Concluído
+Em Andamento
 
 ## Tecnologias
 Angular
