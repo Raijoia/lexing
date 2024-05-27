@@ -1,15 +1,17 @@
-import { Token, TokenType } from "../interfaces/token";
-import { keywords, operators, separators } from "../utils/keywords";
+import { Token, TokenType } from '../interfaces/token';
+import { keywords, operators, separators } from '../utils/keywords';
 
 export class Lexer {
   private input: string;
   private position: number;
   private tokens: Token[];
+  private lastTokenWasKeyword: boolean;
 
   constructor(input: string) {
     this.input = input;
     this.position = 0;
     this.tokens = [];
+    this.lastTokenWasKeyword = false;
   }
 
   public tokenize(): Token[] {
@@ -83,7 +85,16 @@ export class Lexer {
       this.position++;
     }
     const value = this.input.substring(start, this.position);
-    const type = keywords.has(value) ? TokenType.Keyword : TokenType.Identifier;
+    let type = keywords.has(value) ? TokenType.Keyword : TokenType.Identifier;
+
+    // If the last token was not a keyword, convert identifier to unknown
+    if (type === TokenType.Identifier && !this.lastTokenWasKeyword) {
+      type = TokenType.Unknown;
+    }
+
+    // Update the lastTokenWasKeyword state
+    this.lastTokenWasKeyword = type === TokenType.Keyword;
+
     return { type, value };
   }
 
