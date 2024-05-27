@@ -5,13 +5,11 @@ export class Lexer {
   private input: string;
   private position: number;
   private tokens: Token[];
-  private lastTokenWasKeyword: boolean;
 
   constructor(input: string) {
     this.input = input;
     this.position = 0;
     this.tokens = [];
-    this.lastTokenWasKeyword = false;
   }
 
   public tokenize(): Token[] {
@@ -85,21 +83,13 @@ export class Lexer {
     let start = this.position;
     while (
       this.position < this.input.length &&
-      this.isLetter(this.input[this.position])
+      (this.isLetter(this.input[this.position]) ||
+        this.isDigit(this.input[this.position]))
     ) {
       this.position++;
     }
     const value = this.input.substring(start, this.position);
-    let type = keywords.has(value) ? TokenType.Keyword : TokenType.Identifier;
-
-    // If the last token was not a keyword, convert identifier to unknown
-    if (type === TokenType.Identifier && !this.lastTokenWasKeyword) {
-      type = TokenType.Unknown;
-    }
-
-    // Update the lastTokenWasKeyword state
-    this.lastTokenWasKeyword = type === TokenType.Keyword;
-
+    const type = keywords.has(value) ? TokenType.Keyword : TokenType.Identifier;
     return { type, value };
   }
 
@@ -129,7 +119,7 @@ export class Lexer {
 
   private tokenizeString(): Token {
     let start = this.position;
-    this.position++; 
+    this.position++; // Skip the opening quote
 
     while (
       this.position < this.input.length &&
