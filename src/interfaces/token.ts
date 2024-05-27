@@ -7,6 +7,7 @@ export enum TokenType {
   Comment,
   Whitespace,
   Unknown,
+  String
 }
 
 export interface Token {

@@ -44,6 +44,11 @@ export class Lexer {
         continue;
       }
 
+      if (currentChar === '"') {
+        this.tokens.push(this.tokenizeString());
+        continue;
+      }
+
       this.tokens.push({ type: TokenType.Unknown, value: currentChar });
       this.position++;
     }
@@ -120,5 +125,22 @@ export class Lexer {
     }
     this.position += longestMatch.length;
     return { type: TokenType.Operator, value: longestMatch };
+  }
+
+  private tokenizeString(): Token {
+    let start = this.position;
+    this.position++; 
+
+    while (
+      this.position < this.input.length &&
+      this.input[this.position] !== '"'
+    ) {
+      this.position++;
+    }
+
+    this.position++;
+
+    const value = this.input.substring(start, this.position);
+    return { type: TokenType.String, value };
   }
 }
