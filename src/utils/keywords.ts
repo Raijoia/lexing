@@ -49,6 +49,24 @@ export const keywords: Set<string> = new Set([
   'void',
   'volatile',
   'while',
+  'System',
+  'out',
+  'println',
+  'print',
+  'printf',
+  'scanf',
+  'next',
+  'nextInt',
+  'nextDouble',
+  'nextLine',
+  'nextBoolean',
+  'nextByte',
+  'nextShort',
+  'nextLong',
+  'nextFloat',
+  'nextBigInteger',
+  'nextBigDecimal',
+  'String'
 ]);
 
 export const operators: Set<string> = new Set([
