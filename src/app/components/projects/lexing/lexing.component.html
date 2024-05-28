@@ -5,6 +5,10 @@
     <h3>Conteúdo do Arquivo:</h3>
     <pre>{{ fileContent }}</pre>
   </div>
+  <div *ngIf="errorMessage" class="error-message">
+    <h3>Erro:</h3>
+    <p>{{ errorMessage }}</p>
+  </div>
   <div *ngIf="tokens.length > 0">
     <h3>Tokens:</h3>
     <table>

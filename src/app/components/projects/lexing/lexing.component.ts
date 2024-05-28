@@ -8,11 +8,12 @@ import { Lexer } from '../../../../utils/lexer';
   standalone: true,
   imports: [NgIf, NgFor],
   templateUrl: './lexing.component.html',
-  styleUrl: './lexing.component.scss',
+  styleUrls: ['./lexing.component.scss'],
 })
 export class LexingComponent {
   fileContent: string | null = null;
   tokens: Token[] = [];
+  errorMessage: string | null = null;
 
   onFileSelected(event: Event): void {
     const input = event.target as HTMLInputElement;
@@ -36,7 +37,18 @@ export class LexingComponent {
   tokenizeFileContent(): void {
     if (this.fileContent) {
       const lexer = new Lexer(this.fileContent);
-      this.tokens = lexer.tokenize();
+      const tokens = lexer.tokenize();
+      const unknownToken = tokens.find(
+        (token) => token.type === TokenType.Unknown
+      );
+
+      if (unknownToken) {
+        this.errorMessage = `Token desconhecido encontrado: ${unknownToken.value}`;
+        this.tokens = [];
+      } else {
+        this.errorMessage = null;
+        this.tokens = tokens;
+      }
     }
   }
 
