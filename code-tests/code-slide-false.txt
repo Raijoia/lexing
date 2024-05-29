@@ -1,0 +1,8 @@
+int ged(int a, int b)
+{
+  while (a != b) {
+    if (a > c) a -=b;
+    else k -= a;
+  }
+  return a;
+}
