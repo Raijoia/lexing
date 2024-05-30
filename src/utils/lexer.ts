@@ -25,6 +25,16 @@ export class Lexer {
         continue;
       }
 
+      if (this.isCommentStart(currentChar)) {
+        const nextChar = this.input[this.position + 1];
+        if (nextChar === '/') {
+          this.tokens.push(this.tokenizeLineComment());
+        } else if (nextChar === '*') {
+          this.tokens.push(this.tokenizeBlockComment());
+        }
+        continue;
+      }
+
       if (this.isLetter(currentChar)) {
         this.tokens.push(this.tokenizeIdentifierOrKeyword());
         continue;
@@ -83,6 +93,13 @@ export class Lexer {
     return separators.has(char);
   }
 
+  private isCommentStart(char: string): boolean {
+    const nextChar = this.input[this.position + 1];
+    return (
+      (char === '/' && nextChar === '/') || (char === '/' && nextChar === '*')
+    );
+  }
+
   private tokenizeIdentifierOrKeyword(): Token {
     let start = this.position;
     while (
@@ -96,7 +113,9 @@ export class Lexer {
     let type = keywords.has(value) ? TokenType.Keyword : TokenType.Identifier;
 
     if (
-      type === TokenType.Identifier && !this.lastTokenWasKeyword && !this.identfiers.includes(value)
+      type === TokenType.Identifier &&
+      !this.lastTokenWasKeyword &&
+      !this.identfiers.includes(value)
     ) {
       type = TokenType.Unknown;
     }
@@ -149,5 +168,40 @@ export class Lexer {
 
     const value = this.input.substring(start, this.position);
     return { type: TokenType.String, value };
+  }
+
+  private tokenizeLineComment(): Token {
+    let start = this.position;
+    this.position += 2;
+
+    while (
+      this.position < this.input.length &&
+      this.input[this.position] !== '\n'
+    ) {
+      this.position++;
+    }
+
+    const value = this.input.substring(start, this.position);
+    return { type: TokenType.Comment, value };
+  }
+
+  private tokenizeBlockComment(): Token {
+    let start = this.position;
+    this.position += 2;
+
+    while (
+      this.position < this.input.length &&
+      !(
+        this.input[this.position] === '*' &&
+        this.input[this.position + 1] === '/'
+      )
+    ) {
+      this.position++;
+    }
+
+    this.position += 2;
+
+    const value = this.input.substring(start, this.position);
+    return { type: TokenType.Comment, value };
   }
 }
