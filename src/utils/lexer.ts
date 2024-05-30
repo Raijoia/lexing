@@ -18,7 +18,7 @@ export class Lexer {
 
   public tokenize(): Token[] {
     while (this.position < this.input.length) {
-      const currentChar = this.input[this.position];
+      const currentChar = this.input[this.position].toString();
 
       if (this.isWhitespace(currentChar)) {
         this.position++;
@@ -203,6 +203,8 @@ export class Lexer {
 
     if (this.position < this.input.length) {
       this.position += 2;
+    } else {
+      throw new Error('Unclosed block comment');
     }
 
     const value = this.input.substring(start, this.position);
