@@ -70,6 +70,7 @@ export const keywords: Set<string> = new Set([
 ]);
 
 export const operators: Set<string> = new Set([
+  '=',
   '+',
   '-',
   '*',
