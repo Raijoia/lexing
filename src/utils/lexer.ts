@@ -6,14 +6,14 @@ export class Lexer {
   private position: number;
   private tokens: Token[];
   private lastTokenWasKeyword: boolean;
-  private identfiers: string[];
+  private identifiers: string[];
 
   constructor(input: string) {
     this.input = input;
     this.position = 0;
     this.tokens = [];
     this.lastTokenWasKeyword = false;
-    this.identfiers = [];
+    this.identifiers = [];
   }
 
   public tokenize(): Token[] {
@@ -115,13 +115,13 @@ export class Lexer {
     if (
       type === TokenType.Identifier &&
       !this.lastTokenWasKeyword &&
-      !this.identfiers.includes(value)
+      !this.identifiers.includes(value)
     ) {
       type = TokenType.Unknown;
     }
 
-    if (type === TokenType.Identifier && !this.identfiers.includes(value)) {
-      this.identfiers.push(value);
+    if (type === TokenType.Identifier && !this.identifiers.includes(value)) {
+      this.identifiers.push(value);
     }
 
     this.lastTokenWasKeyword = type === TokenType.Keyword;
@@ -164,7 +164,9 @@ export class Lexer {
       this.position++;
     }
 
-    this.position++;
+    if (this.position < this.input.length) {
+      this.position++;
+    }
 
     const value = this.input.substring(start, this.position);
     return { type: TokenType.String, value };
@@ -199,7 +201,9 @@ export class Lexer {
       this.position++;
     }
 
-    this.position += 2;
+    if (this.position < this.input.length) {
+      this.position += 2;
+    }
 
     const value = this.input.substring(start, this.position);
     return { type: TokenType.Comment, value };
