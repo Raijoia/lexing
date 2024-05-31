@@ -56,8 +56,8 @@ export class Lexer {
         continue;
       }
 
-      if (currentChar === '"') {
-        this.tokens.push(this.tokenizeString());
+      if (currentChar === '"' || currentChar === "'") {
+        this.tokens.push(this.tokenizeString(currentChar));
         continue;
       }
 
@@ -153,14 +153,18 @@ export class Lexer {
     return { type: TokenType.Operator, value: longestMatch };
   }
 
-  private tokenizeString(): Token {
+  private tokenizeString(quoteType: string): Token {
     let start = this.position;
     this.position++;
 
     while (
       this.position < this.input.length &&
-      this.input[this.position] !== '"'
+      this.input[this.position] !== quoteType
     ) {
+      this.position++;
+    }
+
+    while(this.input[this.position + 1] === quoteType) {
       this.position++;
     }
 

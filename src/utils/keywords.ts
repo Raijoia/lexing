@@ -66,7 +66,11 @@ export const keywords: Set<string> = new Set([
   'nextFloat',
   'nextBigInteger',
   'nextBigDecimal',
-  'String'
+  'String',
+  'true',
+  'false',
+  'null',
+  'Math',
 ]);
 
 export const operators: Set<string> = new Set([
