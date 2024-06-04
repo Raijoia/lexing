@@ -1,0 +1,100 @@
+// Caminho do arquivo: Main.java
+
+public class Main {
+
+    // Declaração de variáveis para diferentes tipos de dados
+    int a = 10;
+    int b = 5;
+    double c = 3.5;
+    float d = 4.5;
+    long e = 123456789;
+    short f = 2;
+    byte g = 1;
+    boolean flag = true;
+    char letter = 'A';
+
+    public void performArithmeticOperations() {
+        // Operações aritméticas
+        int sum = a + b;
+        int difference = a - b;
+        int product = a * b;
+        int quotient = a / b;
+        int remainder = a % b;
+
+        double sumDouble = c + d;
+        double differenceDouble = c - d;
+        double productDouble = c * d;
+        double quotientDouble = c / d;
+        double remainderDouble = c % d;
+
+        System.out.println("Soma: " + sum);
+        System.out.println("Diferença: " + difference);
+        System.out.println("Produto: " + product);
+        System.out.println("Quociente: " + quotient);
+        System.out.println("Resto: " + remainder);
+
+        System.out.println("Soma (double): " + sumDouble);
+        System.out.println("Diferença (double): " + differenceDouble);
+        System.out.println("Produto (double): " + productDouble);
+        System.out.println("Quociente (double): " + quotientDouble);
+        System.out.println("Resto (double): " + remainderDouble);
+    }
+
+    public void useReservedWords() {
+        // Uso de palavras reservadas
+        int ifStatement = 0;
+        if (flag) {
+            ifStatement = 1;
+        }
+
+        switch (ifStatement) {
+            case 1:
+                System.out.println("Switch case 1");
+                break;
+            default:
+                System.out.println("Switch default");
+                break;
+        }
+
+        while (a > 0) {
+            a--;
+        }
+
+        do {
+            b--;
+        } while (b > 0);
+
+        for (int i = 0; i < 5; i++) {
+            System.out.println("For loop " + i);
+        }
+
+        try {
+            int result = a / b;
+        } catch (Exception ex) {
+            System.out.println("Exceção: ");
+        }
+
+        final int finalVariable = 10;
+        int[] array = {1, 2, 3, 4, 5};
+
+        for (int element : array) {
+            System.out.println("Enhanced for loop: " + element);
+        }
+
+        String str = "Hello";
+        switch (str) {
+            case "Hello":
+                System.out.println("Switch com string");
+                break;
+        }
+
+        boolean condition = false;
+        if (!condition) {
+            System.out.println("Operador lógico NOT");
+        }
+
+        synchronized (this) {
+            System.out.println("Bloco sincronizado");
+        }
+    }
+}
