@@ -71,6 +71,7 @@ export const keywords: Set<string> = new Set([
   'false',
   'null',
   'Math',
+  'Exception ',
 ]);
 
 export const operators: Set<string> = new Set([
