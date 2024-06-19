@@ -7,7 +7,7 @@ Projeto desenvolvido na UC de Teoria da computação e compiladores com objetivo
 [Link para o projeto](https://lexing.vercel.app/)
 
 ## Status
-Em Andamento
+Concluído
 
 ## Tecnologias
 Angular
